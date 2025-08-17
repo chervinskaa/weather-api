@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+ <body class="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+
+  <h1 class="text-3xl font-bold mb-6">Перевірка погоди</h1>
+
+  <input id="city-input" type="text" placeholder="Введіть місто"
+         class="border p-2 rounded w-64 mb-4">
+
+  <button id="get-weather" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+    Отримати погоду
+  </button>
+
+  <div id="weather-result" class="mt-6 p-4 bg-gray-100 rounded w-80 text-center">
+    Тут з’явиться погода
+  </div>
+
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,27 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
- <body class="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
 
-  <h1 class="text-3xl font-bold mb-6">Перевірка погоди</h1>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
 
-  <input id="city-input" type="text" placeholder="Введіть місто"
-         class="border p-2 rounded w-64 mb-4">
+<body>
+  <!-- фон-відео -->
+  <video id="background-video" autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+    <source src="/video-backround/sunbackround.mp4" type="video/mp4">
+  </video>
 
-  <button id="get-weather" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-    Отримати погоду
-  </button>
 
-  <div id="weather-result" class="mt-6 p-4 bg-gray-100 rounded w-80 text-center">
-    Тут з’явиться погода
-  </div>
+  <div class="top-section  ">
+    <!-- ЗАЙМАЄ ВСЮ ШИРИНУ -->
+    <div class="w-full flex justify-between  mt-1 px-2">
+
+      <!-- ЛОГО ЗЛІВА -->
+      <div class="flex items-center">
+        <img src="/icons/letter-w.png" alt="Лого" class="w-8 h-8 mr-3">
+      </div>
+
+      <!-- ІНПУТ І КНОПКА -->
+      <div class="flex items-center border-b ">
+        <input id="city-input" type="text" placeholder="Введіть місто"
+          class="  w-25 p-1 text-sm bg-transparent cursor-text  focus:bg-transparent " autocomplete="off">
+        <button id="get-weather" class="cursor-pointer">
+          <img src="/icons/search-interface-symbol.png" alt="Отримати погоду" class="w-3 h-3">
+        </button>
+      </div>
+    </div>
+
+    <!-- ВІДЦЕНТРОВАНО -->
+    <div class="top-section h-[30vh] flex flex-col justify-end items-center ">
+      <!-- ВЕРХНЯ ЧАСТИНА ДЕ МІСТО,ТЕМП,ЧАС І ДАТА -->
+      <div id="weather-card" class=" p-6  text-center w-full max-w-xs sm:max-w-sm">
+        <div class="flex items-center justify-center gap-4">
+          <!-- Температура зліва -->
+          <p id="temperature" class="text-5xl font-semibold">20°C</p>
+
+          <!-- Інший контент справа -->
+          <div class="city-date  ">
+            <h2 id="city-name" class="text-2xl font-semibold ">Місто</h2>
+            <div class="date-hours flex items-center gap-1 text-xs text-gray-700 whitespace-nowrap">
+              <p id="time">12:34</p>
+              <p id="weekday">Понеділок</p>
+              <p id="date">18 сер 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-section h-[70vh] w-full flex justify-center ">
+      <div class="weather-details  backdrop-blur-md px-10 pt-5 max-w-md w-full text-gray-800">
+        <h4 class="text-center my-6">Погода детальніше</h4>
+        <div class="flex justify-between mb-5">
+          <p>Макс. температура:</p>
+          <p id="temp-max">--°C</p>
+        </div>
+        <div class="flex justify-between mb-5">
+          <p>Мін. температура:</p>
+          <p id="temp-min">--°C</p>
+        </div>
+        <div class="flex justify-between mb-5">
+          <p>Вологість:</p>
+          <p id="humidity">--%</p>
+        </div>
+        <div class="flex justify-between mb-5">
+          <p>Хмарність:</p>
+          <p id="clouds">--%</p>
+        </div>
+        <div class="flex justify-between mb-5">
+          <p>Вітряність:</p>
+          <p id="wind">-- м/с</p>
+        </div>
+      </div>
+    </div>
 
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-  </body>
+</body>
+
 </html>

@@ -3,3 +3,31 @@
 #city-input:focus {
     outline: none;
 }
+
+#city-input-desktop:focus {
+    outline: none;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+
+h1,
+h2,
+#temperature {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+}
+
+
+p,
+.date-hours,
+#temp-max,
+#temp-min,
+#humidity,
+#clouds,
+#wind {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}

@@ -1,9 +1,12 @@
 import './style.css'
 
-const cityInput = document.querySelector("#city-input");
-const getWeatherBtn = document.querySelector("#get-weather");
-const weatherResult = document.querySelector("#weather-result");
+const cityInputMobile = document.querySelector("#city-input");
+const getWeatherBtnMobile = document.querySelector("#get-weather");
 
+const cityInputDesktop = document.querySelector("#city-input-desktop");
+const getWeatherBtnDesktop = document.querySelector("#get-weather-desktop");
+
+const weatherResult = document.querySelector("#weather-result");
 const cityNameEl = document.querySelector("#city-name");
 const tempEl = document.querySelector("#temperature");
 const timeEl = document.querySelector("#time");
@@ -89,8 +92,8 @@ async function getWeatherByCoords(lat, lon) {
 }
 
 // Пошук міста
-async function getCity() {
-    const city = cityInput.value;
+async function getCity(cityInputElement) {
+    const city = cityInputElement.value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=uk`;
 
     try {
@@ -101,7 +104,7 @@ async function getCity() {
         updateWeatherDetails(data);
         setWeatherBackground(data.weather[0].main);
 
-        cityInput.value = ""; 
+        cityInputElement.value = "";
 
     } catch (error) {
         weatherResult.textContent = "Помилка отримання погоди";
@@ -124,7 +127,18 @@ window.addEventListener('load', () => {
     }
 });
 
-getWeatherBtn.addEventListener("click", getCity);
-cityInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") getCity();
-});
+// Події на малих екранах
+if (getWeatherBtnMobile && cityInputMobile) {
+    getWeatherBtnMobile.addEventListener("click", () => getCity(cityInputMobile));
+    cityInputMobile.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") getCity(cityInputMobile);
+    });
+}
+
+// Події на великих екранах
+if (getWeatherBtnDesktop && cityInputDesktop) {
+    getWeatherBtnDesktop.addEventListener("click", () => getCity(cityInputDesktop));
+    cityInputDesktop.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") getCity(cityInputDesktop);
+    });
+}
